@@ -10,7 +10,7 @@ const createUser = async(req, res = response) => {
 
   try {
       let user = await User.findOne({ email });
-      console.log(user)
+      
       if ( user ) {
         return res.status(400).json({
           ok: false,
@@ -52,7 +52,7 @@ const loginUser = async(req, res = response) => {
   try {
 
     const user = await User.findOne({ email });
-      console.log(user)
+      
       if ( !user ) {
         return res.status(400).json({
           ok: false,
@@ -71,7 +71,7 @@ const loginUser = async(req, res = response) => {
     }
 
     // Generar token
-    const token = await generarJWT( user.uid, user.name );
+    const token = await generarJWT( user.id, user.name );
 
     res.json({
       ok: true,
