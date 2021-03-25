@@ -37,34 +37,6 @@ const createEvent = async( req, res = response ) => {
 
 }
 
-const createMultipleEvents = async( req, res = response ) => {
-
-  const events = req.body;
-
-  events.map( async(eventReceived) => {
-    const event = new Event( eventReceived )
-
-    try {
-
-      event.user = req.uid;
-      
-      const savedEvent = await event.save();
-  
-      res.json({
-        ok: true,
-        event: savedEvent
-      });
-      
-    } catch (error) {
-      console.log(error)
-      res.status(500).json({
-        ok:false,
-        msg: 'Por favor hable con el administrador'
-      });
-    }
-  } );
-}
-
 const updateEvent = async( req, res = response ) => {
 
   const eventId = req.params.id;
@@ -154,6 +126,5 @@ module.exports = {
   getEvents,
   createEvent,
   updateEvent,
-  deleteEvent,
-  createMultipleEvents
+  deleteEvent
 }

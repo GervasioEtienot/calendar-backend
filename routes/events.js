@@ -5,7 +5,7 @@
 
 const { Router } = require('express');
 const { check, body } = require('express-validator');
-const { getEvents, createEvent, updateEvent, deleteEvent, createMultipleEvents } = require('../controllers/eventsControllers');
+const { getEvents, createEvent, updateEvent, deleteEvent } = require('../controllers/eventsControllers');
 const { isDate } = require('../helpers/isDate');
 const { fieldValidator } = require('../middlewares/fieldValidator');
 const { jwtValidator } = require('../middlewares/jwtValidator');
@@ -24,13 +24,6 @@ router.post( '/', [
   fieldValidator
 ], createEvent );
 
-router.post( '/multiple', [
-  body().isArray(),
-  body('[0].title', 'El título es obligatorio').not().isEmpty(),
-  body('*.start', 'La fecha de inicio es obligatoria').custom( isDate ),
-  body('*.end', 'La fecha de finalización es obligatoria').custom( isDate ),
-  fieldValidator
-], createMultipleEvents );
 
 router.put( '/:id', updateEvent );
 

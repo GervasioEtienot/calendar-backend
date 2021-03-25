@@ -13,9 +13,9 @@ const EventSchema = Schema({
     type: Date,
     required: true
   },
-  // bgcolor: {
-  //   type: String
-  // },
+  fixedEvents: {
+    type: Boolean, default: false
+  },
   notes: {
     type: String,
   },
