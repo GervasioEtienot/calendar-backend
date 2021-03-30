@@ -13,7 +13,7 @@ const EventSchema = Schema({
     type: Date,
     required: true
   },
-  fixedEvents: {
+  fixedEvent: {
     type: Boolean, default: false
   },
   notes: {
