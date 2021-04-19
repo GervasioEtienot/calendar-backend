@@ -109,7 +109,7 @@ const deleteEvent = async( req, res = response ) => {
     res.json({
       ok: true,
       msg: 'Evento eliminado',
-      Evento: deletedEvent.title
+      // Evento: deletedEvent.title
     });
   
   } catch (error) {

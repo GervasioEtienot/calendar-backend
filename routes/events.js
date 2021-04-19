@@ -18,9 +18,10 @@ router.use( jwtValidator );
 router.get( '/', getEvents );
 
 router.post( '/', [
-  check('title', 'El título es obligatorio').not().isEmpty(),
+  // check('title', 'El título es obligatorio').not().isEmpty(),
   check('start', 'La fecha de inicio es obligatoria').custom( isDate ),
   check('end', 'La fecha de finalización es obligatoria').custom( isDate ),
+  check('field', 'Debe seleccionar una de las canchas').isNumeric(),
   fieldValidator
 ], createEvent );
 
