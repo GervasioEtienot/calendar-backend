@@ -17,6 +17,7 @@ router.post(
   '/new',
   [
     check('name', 'El nombre de usuario es obligatorio').not().isEmpty(),
+    check('name', 'Debe introducir nombre y apellido').contains(' '),
     check('email', 'El email es obligatorio').isEmail(),
     check('password', 'El password debe tener al menos 6 caracteres').isLength({ min: 6 }),
     fieldValidator
