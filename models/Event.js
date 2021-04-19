@@ -1,10 +1,10 @@
 const { Schema, model, SchemaTypes } = require('mongoose');
 
 const EventSchema = Schema({
-  title: {
-    type: String,
-    required: true
-  },
+  // title: {
+  //   type: String,
+  //   required: true
+  // },
   start: {
     type: Date,
     required: true
@@ -16,8 +16,12 @@ const EventSchema = Schema({
   fixedEvent: {
     type: Boolean, default: false
   },
-  notes: {
-    type: String,
+  players: [{
+      type: String,
+    }],
+  field: {
+    type: Number,
+    required: true
   },
   user: {
     type: Schema.Types.ObjectId,
